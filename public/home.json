@@ -1,5 +1,5 @@
 {
-    "appname" : "PSU LAZADA",
+    "appname" : "PSU Shopping",
     "slides" : [ "2.jpg", "1.jpg", "3.jpg" ],
     "categories" : [
         { "name" : "Cosmetic" , "icon": "md-face"},
