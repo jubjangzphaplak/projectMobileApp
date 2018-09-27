@@ -123,7 +123,7 @@
                     <ons-list-header>Shopping Cart</ons-list-header>
 
                     <div id="carts"></div>
-                        <script id="carts_template" type="text/template">
+                    <script id="carts_template" type="text/template">
                       <% cart.forEach(function(cart){%>  
                     <ons-list-item>
                       <div class="left">
@@ -143,8 +143,8 @@
             
                   </script>
                 </ons-list>
-               <p style="text-align: center; margin: 10px;">
-                    <ons-button modifier="large">PROCEED TO PAY</ons-button> 
+                <p style="text-align: center; margin: 10px;">
+                    <ons-button modifier="large">PROCEED TO PAY</ons-button>
                 </p>
             </ons-page>
         </template>
@@ -157,9 +157,8 @@
             <ons-page id="Tab3">
                 <ons-list>
                     <ons-list-header>Product</ons-list-header>
-
                     <div id="shop"></div>
-                        <script id="shop_template" type="text/template">
+                    <script id="shop_template" type="text/template">
                             <% product.forEach(function(product){%>  
                           <ons-list-item>
                             <div class="left">
@@ -189,84 +188,85 @@
 
 
 
-    <script>
-        getHomeData();
-        document.addEventListener('prechange', function (event) {
-            if (event.index == 0) {
-                console.log('Home clicked');
-                // get data for home screen
+        <script>
+            getHomeData();
+            document.addEventListener('prechange', function (event) {
+                if (event.index == 0) {
+                    console.log('Home clicked');
+                    // get data for home screen
 
 
 
-            } else if (event.index == 1) {
-                console.log('Cart clicked');
-                // get data for cart screen
-                getCartData();
+                } else if (event.index == 1) {
+                    console.log('Cart clicked');
+                    // get data for cart screen
+                    getCartData();
+
+                }
+
+                else if (event.index == 2) {
+                    console.log('products clicked');
+                    // get data for cart screen
+                    getAllProduct();
+
+                }
+
+
+            });
+
+            function getHomeData() {
+                var docRef = db.collection("UI").doc("home"); // ผ่าน UI ผ่าน DOC HOME
+                docRef.get().then(function (doc) {
+                    if (doc.exists) {
+                        //Display Data ข้อมูลปกติจะใช้งานตรงนี้
+                        console.log("Document data:", doc.data());
+                        var data = doc.data();
+                        $('#appname').html(data.appname);
+                        var style = "background: url('imges/" + data.slides[0] + "')no-repeat center;background-size: contain;'";
+                        $('#carousel1').attr('style', style);
+                        var icon_template = $('#icon_template').html();
+                        var html = ejs.render(icon_template, { categories: data.categories });
+                        $('#icons').html(html);
+                    } else {
+                        // doc.data() will be undefined in this case
+                        console.log("No such document!");
+                    }
+                }).catch(function (error) {
+                    console.log("Error getting document:", error);
+                });
+            }
+
+
+            function getCartData() {
+                var docRef = db.collection("UI").doc("cart"); // ผ่าน UI ผ่าน DOC HOME
+                docRef.get().then(function (doc) {
+                    if (doc.exists) {
+                        //Display Data ข้อมูลปกติจะใช้งานตรงนี้
+                        console.log("Document data:", doc.data());
+                        var data = doc.data();
+                        var carts_template = $('#carts_template').html();
+                        var html = ejs.render(carts_template, { cart: data.cart });
+                        $('#carts').html(html);
+                    } else {
+                        // doc.data() will be undefined in this case
+                        console.log("No such document!");
+                    }
+                }).catch(function (error) {
+                    console.log("Error getting document:", error);
+                });
+            }
+
+            function getAllProduct() {
+                var allProductRef = db.collection("products").where("category", "==", "sport");
+                allProductRef.get().then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        console.log(doc.id, " => ", doc.data());
+                    });
+                });
 
             }
 
-        });
-
-        function getHomeData() {
-            var docRef = db.collection("UI").doc("home"); // ผ่าน UI ผ่าน DOC HOME
-            docRef.get().then(function (doc) {
-                if (doc.exists) {
-                    //Display Data ข้อมูลปกติจะใช้งานตรงนี้
-                    console.log("Document data:", doc.data());
-                    var data = doc.data();
-                    $('#appname').html(data.appname);
-                    var style = "background: url('imges/" + data.slides[0] + "')no-repeat center;background-size: contain;'";
-                    $('#carousel1').attr('style', style);
-                    var icon_template = $('#icon_template').html();
-                    var html = ejs.render(icon_template, { categories: data.categories });
-                    $('#icons').html(html);
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                }
-            }).catch(function (error) {
-                console.log("Error getting document:", error);
-            });
-        }
-
-
-        function getCartData() {
-            var docRef = db.collection("UI").doc("cart"); // ผ่าน UI ผ่าน DOC HOME
-            docRef.get().then(function (doc) {
-                if (doc.exists) {
-                    //Display Data ข้อมูลปกติจะใช้งานตรงนี้
-                    console.log("Document data:", doc.data());
-                    var data = doc.data();
-                    var carts_template = $('#carts_template').html();
-                    var html = ejs.render(carts_template, { cart: data.cart });
-                    $('#carts').html(html);
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                }
-            }).catch(function (error) {
-                console.log("Error getting document:", error);
-            });
-        }
-
-        function getShopData() {
-            var docRef = db.collection("UI").doc("shopping"); // ผ่าน UI ผ่าน DOC HOME
-            docRef.get().then(function (doc) {
-                if (doc.exists) {
-                    //Display Data ข้อมูลปกติจะใช้งานตรงนี้
-                    console.log("Document data:", doc.data());
-                    var data = doc.data();
-                    var shop_template = $('#shop_template').html();
-                    var html = ejs.render(shop_template, { product: data.product });
-                    $('#shop').html(html);
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                }
-            }).catch(function (error) {
-                console.log("Error getting document:", error);
-            });
-        }
 
 
 
@@ -274,9 +274,7 @@
 
 
 
-
-//
-    </script>
+        </script>
 </body>
 
 </html>
