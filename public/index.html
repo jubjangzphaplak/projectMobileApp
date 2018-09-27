@@ -270,8 +270,22 @@
 
             function addNewData() {
                 // Add a new data .
-                db.collection("products").doc().add(data);
+                var data = {
+                    pid: 10,
+                    title: 'notebook',
+                    price: 25000,
+                    category: 'computer'
+                }
 
+
+
+                db.collection("products").add(data)
+                .then(function (docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function (error) {
+                        console.error("Error adding document: ", error);
+                    });
             }
 
 
