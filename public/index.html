@@ -57,7 +57,7 @@
                 <ons-toolbar-button icon="md-help"></ons-toolbar-button>
             </div>
         </ons-toolbar>
-        <ons-tabbar swipeable position="auto">
+        <ons-tabbar swipeable position="auto" id="tabbar">
             <ons-tab page="tab1.html" label="Home" onclick="" icon="ion-home, material:md-home" badge="7" active>
             </ons-tab>
             <ons-tab page="tab2.html" label="Cart" onclick="" icon="fa-shopping-bag" active-icon="fa-shopping-bag">
@@ -98,7 +98,7 @@
                 <script id="icon_template" type="text/template">
              <ons-row style="height:120px" vertical-align="center">
                 <% categories.forEach(function(category){%>
-                <ons-col style="background:#FFFF99	;" width="33%">
+                <ons-col style="background:#FFFF99	;" width="33%" onclick="changeTab('<%= category.name %>')">
                     <p style="text-align: center; margin: 10px;">
                         <ons-icon size="60px" icon="<%= category.icon %>"></ons-icon>
                     </p>
@@ -174,11 +174,12 @@
                           </ons-col>
                           <%});%>
                         </script>
-                  
-                        </ons-row>
-                    <center> <ons-button onclick="addnewdata()">
-                          ADD DATA</center>
-                        </ons-button>
+
+                </ons-row>
+                <center>
+                    <ons-button onclick="addnewdata()">
+                        ADD DATA</center>
+                </ons-button>
 
             </ons-page>
         </template>
@@ -194,6 +195,7 @@
             getHomeData();
             document.addEventListener('prechange', function (event) {
                 if (event.index == 0) {
+                    localStorage.clear('name');
                     console.log('Home clicked');
                     // get data for home screen
 
@@ -207,15 +209,20 @@
                 }
 
                 else if (event.index == 2) {
+                    var name = localStorage.getItem('name');
                     console.log('products clicked');
                     // get data for cart screen
-                    getallProduct();
-
+                    if (name == null) { getallProduct(); }
+                    else { getallProduct(name); }
                 }
 
 
             });
+            function changeTab(name) {
+                localStorage.setItem('name', name);
+                document.getElementById('tabbar').setActiveTab(2);
 
+            }
             function getHomeData() {
                 var docRef = db.collection("UI").doc("home"); // ผ่าน UI ผ่าน DOC HOME
                 docRef.get().then(function (doc) {
@@ -259,24 +266,26 @@
                 });
             }
 
-            function getallProduct() {
-                var apr = db.collection("products")//.where("category", "==", "sport"); //เลือกเฉพาะ
-                apr.get().then(function (querySnapshot) {
-                    /*querySnapshot.forEach(function (doc) {
-                      var data = doc.data();
-                      console.log(data);
-                      var allP_template = $('#allP_template').html();
-                      querySnapshot
-                      var html = ejs.render(allP_template, { allP: data });
-                      console.log(html);
-                      $('#allP').html(html);
+            function getallProduct(name) {
+                if (name == null) {
+                    var apr = db.collection("products")//.where("category", "==", "sport"); //เลือกเฉพาะ
+                    apr.get().then(function (querySnapshot) {
+                       
+                        var allProduct_template = $('#allProduct_template').html();
+                        console.log(querySnapshot);
+                        var html = ejs.render(allProduct_template, { allProduct: querySnapshot.docs });
+                        $('#allProduct').html(html);
+                    })
+                } else {
+                    var apr = db.collection("products").where("category", "==", name); //เลือกเฉพาะ
+                    apr.get().then(function (querySnapshot) {
                       
-                    })*/
-                    var allProduct_template = $('#allProduct_template').html();
-                    console.log(querySnapshot);
-                    var html = ejs.render(allProduct_template, { allProduct: querySnapshot.docs });
-                    $('#allProduct').html(html);
-                })
+                        var allProduct_template = $('#allProduct_template').html();
+                        console.log(querySnapshot);
+                        var html = ejs.render(allProduct_template, { allProduct: querySnapshot.docs });
+                        $('#allProduct').html(html);
+                    })
+                }
             }
 
 
