@@ -58,11 +58,11 @@
             </div>
         </ons-toolbar>
         <ons-tabbar swipeable position="auto">
-            <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="7" active>
+            <ons-tab page="tab1.html" label="Home" onclick=""  icon="ion-home, material:md-home" badge="7" active>
             </ons-tab>
-            <ons-tab page="tab2.html" label="Cart" icon="fa-shopping-bag" active-icon="fa-shopping-bag">
+            <ons-tab page="tab2.html" label="Cart" onclick=""  icon="fa-shopping-bag" active-icon="fa-shopping-bag">
             </ons-tab>
-            <ons-tab page="tab3.html" label="Shopping" icon="fa-heart" active-icon="fa-heart">
+            <ons-tab page="tab3.html" label="Shopping"    icon="fa-heart" active-icon="fa-heart">
             </ons-tab>
         </ons-tabbar>
 
@@ -159,7 +159,9 @@
                 <hr>
 
 
-
+                <p style="text-align: center; margin: 10px;">
+                        <ons-button modifier="large"> Add Product</ons-button>
+                    </p>
 
             </ons-page>
         </template>
@@ -218,6 +220,7 @@
                     console.log("Error getting document:", error);
                 });
             }
+
 
 
             function getCartData() {
