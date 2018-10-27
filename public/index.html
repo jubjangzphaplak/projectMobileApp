@@ -162,24 +162,23 @@
                     var item = allProduct.data();
                     %>  
                     <ons-col width="100%">
-                      <ons-card>
-                        <img src="" alt="Onsen UI" style="width: 100%">
-                        <div class="title">
-                         Title:  <%= item.title%>
-                        </div>
-                        <div class="content" id="Pdetail">
-                          Price: <%= item.price %>
-                        </div>
-                      </ons-card>
-                    </ons-col>
-                    <%});%>
-                  </script>
-
-                </ons-row>
-                <ons-button onclick="addnewdata()">
-                    ADD DATA
-                </ons-button>
-
+                            <ons-card>
+                              <center><img src="<%=item.photo%>" alt="Onsen UI" style="width: 70%"></center>
+                              <div class="title">
+                                <%=item.title%>
+                              </div>
+                              <div class="content" id="Pdetail">
+                                Price: <%= item.price %>
+                              </div>
+                            </ons-card>
+                          </ons-col>
+                          <%});%>
+                        </script>
+                  
+                        </ons-row>
+                        <ons-button onclick="addnewdata()">
+                          ADD DATA
+                        </ons-button>
             </ons-page>
         </template>
 
@@ -209,7 +208,7 @@
                 else if (event.index == 2) {
                     console.log('products clicked');
                     // get data for cart screen
-                    getAllProduct();
+                    getallProduct();
 
                 }
 
@@ -260,7 +259,7 @@
             }
 
             function getallProduct() {
-                var apr = db.collection("Products")//.where("category", "==", "sport"); //เลือกเฉพาะ
+                var apr = db.collection("products")//.where("category", "==", "sport"); //เลือกเฉพาะ
                 apr.get().then(function (querySnapshot) {
                     /*querySnapshot.forEach(function (doc) {
                       var data = doc.data();
@@ -272,7 +271,7 @@
                       $('#allP').html(html);
                       
                     })*/
-                    var allProduct_template = $('#_template').html();
+                    var allProduct_template = $('#allProduct_template').html();
                     console.log(querySnapshot);
                     var html = ejs.render(allProduct_template, { allProduct: querySnapshot.docs });
                     $('#allProduct').html(html);
@@ -283,7 +282,7 @@
 
 
 
-            function addnewdata() {
+            function addNewdata() {
                 var data = {
                     pid: 10,
                     title: 'Computer',
