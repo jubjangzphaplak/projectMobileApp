@@ -26,3 +26,45 @@
 [debug] [2018-09-27T06:36:54.741Z] <<< HTTP RESPONSE 200
 [info] i  hosting[shopee-6ab15]: Serving hosting files from: public
 [info] +  hosting[shopee-6ab15]: Local server: http://localhost:5000
+[debug] [2018-10-27T03:52:01.305Z] ----------------------------------------------------------------------
+[debug] [2018-10-27T03:52:01.308Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\STD\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-10-27T03:52:01.308Z] CLI Version:   4.2.1
+[debug] [2018-10-27T03:52:01.308Z] Platform:      win32
+[debug] [2018-10-27T03:52:01.308Z] Node Version:  v8.11.3
+[debug] [2018-10-27T03:52:01.309Z] Time:          Sat Oct 27 2018 10:52:01 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-10-27T03:52:01.309Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-27T03:52:01.423Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-27T03:52:01.425Z] > authorizing via signed-in user
+[debug] [2018-10-27T03:52:01.428Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-10-27T03:52:01.428Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-10-27T03:52:01.754Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-27T03:52:01.818Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/shopee-6ab15  
+ 
+[debug] [2018-10-27T03:52:11.505Z] ----------------------------------------------------------------------
+[debug] [2018-10-27T03:52:11.508Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\STD\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-10-27T03:52:11.509Z] CLI Version:   4.2.1
+[debug] [2018-10-27T03:52:11.509Z] Platform:      win32
+[debug] [2018-10-27T03:52:11.509Z] Node Version:  v8.11.3
+[debug] [2018-10-27T03:52:11.509Z] Time:          Sat Oct 27 2018 10:52:11 GMT+0700 (SE Asia Standard Time)
+[debug] [2018-10-27T03:52:11.509Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-27T03:52:11.523Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-27T03:52:11.525Z] > authorizing via signed-in user
+[debug] [2018-10-27T03:52:11.527Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/shopee-6ab15  
+ 
+[debug] [2018-10-27T03:52:12.600Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'shopee-6ab15'...
+[info] 
+[info] i  deploying hosting
+[debug] [2018-10-27T03:52:12.606Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/shopee-6ab15/versions  
+
+[debug] [2018-10-27T03:52:14.673Z] <<< HTTP RESPONSE 200
+[info] i  hosting[shopee-6ab15]: beginning deploy...
+[info] i  hosting[shopee-6ab15]: found 12 files in public
+[debug] [2018-10-27T03:52:14.776Z] [hosting] hash cache [cHVibGlj] stored for 12 files
+[debug] [2018-10-27T03:52:14.776Z] [hosting][hash queue][FINAL]
+[debug] [2018-10-27T03:52:14.776Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/shopee-6ab15/versions/a280d07375f2f5b9:populateFiles  
+ <request body omitted>
