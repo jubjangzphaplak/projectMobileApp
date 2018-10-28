@@ -221,7 +221,7 @@
         getHomeData();
         document.addEventListener('prechange', function (event) {
             if (event.index == 0) {
-                localStorage.clear('name');
+                localStorage.clear('product');
                 console.log('Home clicked');
                 // get data for home screen
 
@@ -235,17 +235,17 @@
             }
 
             else if (event.index == 2) {
-                var name = localStorage.getItem('name');
+                var product = localStorage.getItem('product');
                 console.log('products clicked');
                 // get data for cart screen
-                if (name == null) { getallProduct(); }
-                else { getallProduct(name); }
+                if (product == null) { getallProduct(); }
+                else { getallProduct(product); }
             }
 
 
         });
-        function changeTab(name) {
-            localStorage.setItem('name', name);
+        function changeTab(product) {
+            localStorage.setItem('product', product);
             document.getElementById('tabbar').setActiveTab(2);
 
         }
@@ -292,8 +292,8 @@
             });
         }
 
-        function getallProduct(name) {
-            if (name == null) {
+        function getallProduct(product) {
+            if (product == null) {
                 var apr = db.collection("products")//.where("category", "==", "sport"); //เลือกเฉพาะ
                 apr.get().then(function (querySnapshot) {
 
@@ -303,7 +303,7 @@
                     $('#allProduct').html(html);
                 })
             } else {
-                var apr = db.collection("products").where("category", "==", name); //เลือกเฉพาะ
+                var apr = db.collection("products").where("category", "==", product); //เลือกเฉพาะ
                 apr.get().then(function (querySnapshot) {
 
                     var allProduct_template = $('#allProduct_template').html();
