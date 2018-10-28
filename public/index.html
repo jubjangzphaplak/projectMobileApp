@@ -49,7 +49,7 @@
             padding-left: 5px;
             padding-bottom: 5px;
             padding-right: 5px;
-            color: salmon;
+            color: white;
         }
 
         * {
@@ -71,12 +71,12 @@
 <body>
 
     <ons-page>
-        <ons-toolbar>
+        <ons-toolbar class="narbar" style="background-color: salmon">
             <div class="left">
                 <ons-icon class="toolbaricon" size="30px" icon="fa-shopping-bag"></ons-toolbar-button>
             </div>
             <div class="center" id="appname">
-                <p></p>
+
             </div>
             <div class="right">
                 <ons-icon class="toolbaricon" size="30px" icon="md-help"></ons-toolbar-button>
@@ -88,7 +88,7 @@
             </ons-tab>
             <ons-tab page="tab2.html" label="Cart" onclick="" icon="fa-shopping-bag" active-icon="fa-shopping-bag">
             </ons-tab>
-            <ons-tab page="tab3.html" label="All Product" icon="fa-heart" active-icon="fa-heart">
+            <ons-tab page="tab3.html" label="All Product" onclick="" icon="fa-shopping-basket" active-icon="fa-shopping-basket">
             </ons-tab>
         </ons-tabbar>
     </ons-page>
@@ -167,7 +167,7 @@
                   </script>
             </ons-list>
             <p style="text-align: center; margin: 10px;">
-                <ons-button modifier="large" class="title">PROCEED TO PAY</ons-button>
+                <ons-button modifier="large" class="title" style="background-color:red">PROCEED TO PAY</ons-button>
             </p>
         </ons-page>
     </template>
@@ -208,17 +208,10 @@
 
             </ons-row>
             <center>
-                <ons-button onclick="addnewdata()" class="title">
+                <ons-button onclick="addnewdata()" class="title" style="background-color:red">
                     ADD DATA</center>
             </ons-button>
-
-        </ons-page>
-    </template>
-
-
-    <template id="tab4.html">
-        <ons-page id="Tab4">
-
+            <br>
 
         </ons-page>
     </template>
@@ -327,10 +320,7 @@
             }
         }
 
-
-
-
-
+        
         function addNewdata() {
             var data = {
                 pid: 10,
