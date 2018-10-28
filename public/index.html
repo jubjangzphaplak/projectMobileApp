@@ -13,7 +13,7 @@
     <script src="ejs.js"></script>
     <link rel="stylesheet" href="default.css" />
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Nunito|Share|Titillium+Web" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
@@ -55,11 +55,12 @@
         * {
             font-family: 'Sniglet', cursive;
         }
+        
         .title{
 
              font-family: 'Sniglet', cursive;
         }
-        
+       
     </style>
 
 
@@ -177,8 +178,8 @@
                 <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)"></ons-search-input>
             </p>
             <hr>
-            <p>
-                <b> &nbsp; &nbsp; แบรนด์สุดฮิต</b> อัพเดทใหม่วันนี้</p>
+            <div class="text"> <p>
+                <b> &nbsp; &nbsp; แบรนด์สุดฮิต</b> อัพเดทใหม่วันนี้</p></div>
             <div id="allProduct"></div>
             <script id="allProduct_template" type="text/template"> 
                 <ons-row> 
