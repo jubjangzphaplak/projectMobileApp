@@ -154,16 +154,18 @@
                 </p>
                 <hr>
                 <p>
-                    <b> &nbsp; &nbsp; แบรนด์สุดฮิต</b> อัพเดทใหม่วันนี้</p>
-                <ons-row>
-                    <div id="allProduct"></div>
-                    <script id="allProduct_template" type="text/template"> 
+                    <b> &nbsp; &nbsp; แบรนด์สุดฮิต</b> อัพเดทใหม่วันนี้</p> 
+               <div id="allProduct"></div>
+               <script id="allProduct_template" type="text/template"> 
+                <ons-row> 
                   <% allProduct.forEach(function(allProduct){
                     var item = allProduct.data();
                     %>  
-                    <ons-col width="100%">
+                   
+                    
+                    <ons-col width="50%">
                             <ons-card>
-                              <center><img src="<%=item.photo%>" alt="Onsen UI" style="width: 50%"></center>
+                            <img src="<%=item.photo%>" alt="Onsen UI" style="width: 100%">
                               <div class="title">
                                 <%=item.title%>
                               </div>
@@ -270,7 +272,7 @@
                 if (name == null) {
                     var apr = db.collection("products")//.where("category", "==", "sport"); //เลือกเฉพาะ
                     apr.get().then(function (querySnapshot) {
-                       
+
                         var allProduct_template = $('#allProduct_template').html();
                         console.log(querySnapshot);
                         var html = ejs.render(allProduct_template, { allProduct: querySnapshot.docs });
@@ -279,7 +281,7 @@
                 } else {
                     var apr = db.collection("products").where("category", "==", name); //เลือกเฉพาะ
                     apr.get().then(function (querySnapshot) {
-                      
+
                         var allProduct_template = $('#allProduct_template').html();
                         console.log(querySnapshot);
                         var html = ejs.render(allProduct_template, { allProduct: querySnapshot.docs });
