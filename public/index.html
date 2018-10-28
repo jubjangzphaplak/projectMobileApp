@@ -52,9 +52,14 @@
             color: salmon;
         }
 
-        .page {
+        * {
             font-family: 'Sniglet', cursive;
         }
+        .title{
+
+             font-family: 'Sniglet', cursive;
+        }
+        
     </style>
 
 
@@ -159,7 +164,7 @@
                   </script>
             </ons-list>
             <p style="text-align: center; margin: 10px;">
-                <ons-button modifier="large">PROCEED TO PAY</ons-button>
+                <ons-button modifier="large" class="title">PROCEED TO PAY</ons-button>
             </p>
         </ons-page>
     </template>
@@ -198,7 +203,7 @@
 
             </ons-row>
             <center>
-                <ons-button onclick="addnewdata()">
+                <ons-button onclick="addnewdata()"  class="title">
                     ADD DATA</center>
             </ons-button>
 
