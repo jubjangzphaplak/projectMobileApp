@@ -88,11 +88,11 @@
             </ons-toolbar>
 
             <ons-tabbar swipeable position="auto" id="tabbar">
-                <ons-tab page="tab1.html" label="Home" onclick="" icon="ion-home, material:md-home"  active>
+                <ons-tab page="tab1.html" label="Home" onclick="" icon="ion-home, material:md-home"  style="background-color: salmon">
                 </ons-tab>
-                <ons-tab page="tab2.html" label="Cart" onclick="" icon="fa-shopping-bag" active-icon="fa-shopping-bag">
+                <ons-tab page="tab2.html" label="Cart" onclick="" icon="fa-shopping-bag" active-icon="fa-shopping-bag" style="background-color: salmon">
                 </ons-tab>
-                <ons-tab page="tab3.html" label="All Product" onclick="" icon="fa-shopping-basket" active-icon="fa-shopping-basket">
+                <ons-tab page="tab3.html" label="All Product" onclick="" icon="fa-shopping-basket" active-icon="fa-shopping-basket" style="background-color: salmon">
                 </ons-tab>
             </ons-tabbar>
         </ons-page>
@@ -130,9 +130,9 @@
             <script id="icon_template" type="text/template">
              <ons-row style="height:120px" vertical-align="center">
                 <% categories.forEach(function(category){%>
-                <ons-col style="background:salmon	;" width="33%" onclick="changeTab('<%= category.name %>')">
+                <ons-col style="background:#FF9999	;" width="33%" onclick="changeTab('<%= category.name %>')">
                     <p style="text-align: center; margin: 10px;">
-                        <ons-icon  style="color: white" size="60px" icon="<%= category.icon %>"></ons-icon>
+                        <ons-icon  style="color: white" size="63px" icon="<%= category.icon %>"></ons-icon>
                     </p>
                     <p style="text-align: center; margin: 10px; color:white;" id="icon1_text" >
                         <%= category.name %>
@@ -465,7 +465,7 @@ function search(search) {
   localStorage.setItem('items', item);
   
 
-  console.log('tong',item);
+  console.log('111',item);
   
 test(item);
 
